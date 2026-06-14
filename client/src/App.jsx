@@ -4,6 +4,7 @@
 // Each route will map to a page component (built during feature modules).
 
 import { Routes, Route, Navigate } from 'react-router-dom';
+import ConnectionTest from './pages/ConnectionTest';
 
 // Temporary placeholder pages (will be replaced during module development)
 const LoginPage    = () => <h1>🏥 HMS — Login Page</h1>;
@@ -17,7 +18,8 @@ function App() {
       <Route path="/"         element={<Navigate to="/login" replace />} />
       <Route path="/login"    element={<LoginPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
-
+      <Route path="/test" element={<ConnectionTest />} />  
+         
       {/* 404 catch-all */}
       <Route path="*"         element={<NotFoundPage />} />
     </Routes>

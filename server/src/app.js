@@ -53,6 +53,17 @@ app.get('/api/v1', (req, res) => {
     environment: process.env.NODE_ENV,
   });
 });
+// Health check endpoint (used by frontend connection test)
+app.get('/api/v1/health', (req, res) => {
+  res.status(200).json({
+    success:     true,
+    message:     'HMS API is healthy',
+    version:     'v1',
+    environment: process.env.NODE_ENV,
+    timestamp:   new Date().toISOString(),
+    database:    'hms_db',
+  });
+});
 
 // ── 404 Handler ───────────────────────────────────────────
 app.use((req, res) => {
@@ -72,5 +83,7 @@ app.use((err, req, res, next) => {
     ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
   });
 });
+
+
 
 module.exports = app;
