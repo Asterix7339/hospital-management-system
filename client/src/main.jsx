@@ -1,17 +1,17 @@
-// src/main.jsx
-// Application entry point.
-// Wraps the app in BrowserRouter to enable client-side routing.
-
+// client/src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import App from './App.jsx';
+import { AuthProvider } from './context/AuthContext.jsx'; // <-- ADD
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <AuthProvider>          {/* <-- ADD: wraps the app so all pages see auth state */}
+        <App />
+      </AuthProvider>         {/* <-- ADD */}
     </BrowserRouter>
   </React.StrictMode>
 );
